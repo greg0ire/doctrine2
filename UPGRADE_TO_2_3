@@ -1,3 +1,8 @@
 # Merge copies non persisted properties too
 
 When merging an entity in UoW not only mapped properties are copied, but also others.
+
+# Query TreeWalker method renamed
+
+Internal changes were made to DQL and SQL generation. If you have implemented your own TreeWalker,
+you probably need to update it. The method walkJoinVariableDeclaration is now named walkJoin.
