@@ -20,6 +20,7 @@
 namespace Doctrine\ORM\Mapping\Driver;
 
 use Doctrine\Common\Collections\Criteria;
+use DOMDocument;
 use SimpleXMLElement;
 use Doctrine\Common\Persistence\Mapping\Driver\FileDriver;
 use Doctrine\ORM\Mapping\Builder\EntityListenerBuilder;
@@ -841,6 +842,7 @@ class XmlDriver extends FileDriver
      */
     protected function loadMappingFile($file)
     {
+        $this->validateMapping($file);
         $result = [];
         // Note: we do not use `simplexml_load_file()` because of https://bugs.php.net/bug.php?id=62577
         $xmlElement = simplexml_load_string(file_get_contents($file));
@@ -863,6 +865,23 @@ class XmlDriver extends FileDriver
         }
 
         return $result;
+    }
+
+    private function validateMapping(string $file) : void
+    {
+        $backedUpErrorSetting = libxml_use_internal_errors(true);
+
+        $document = new DOMDocument();
+        $document->load($file);
+
+        try {
+            if ( ! $document->schemaValidate(__DIR__ . '/../../../../../doctrine-mapping.xsd')) {
+                throw MappingException::fromLibXmlErrors(libxml_get_errors());
+            }
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($backedUpErrorSetting);
+        }
     }
 
     /**
