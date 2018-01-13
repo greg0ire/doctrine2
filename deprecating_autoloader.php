@@ -1,20 +1,15 @@
 <?php
 
+use Doctrine\ORM\DeprecatedClassesRegistry;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
-spl_autoload_register(function ($class) : void {
-    $deprecatedClasses = [
-        Doctrine\ORM\Mapping\ClassMetadataInfo::class => [ClassMetadata::class, '2.7', '3.0'],
-    ];
+require_once __DIR__ . '/DeprecatedClassesRegistry.php';
+$registry = new DeprecatedClassesRegistry;
+$registry->registerClasses([
+    Doctrine\ORM\Mapping\ClassMetadataInfo::class => [ClassMetadata::class, ['2.7', '3.0']],
+]);
 
-    if (array_key_exists($class, $deprecatedClasses)) {
-        $deprecationMetadata = $deprecatedClasses[$class];
-        @trigger_error(sprintf(
-            'Class %s is deprecated in favor of class %s since %s, will be removed in %s.',
-            $class,
-            ...$deprecationMetadata
-        ), E_USER_DEPRECATED);
-        class_alias($deprecationMetadata[0], $class);
-    }
+spl_autoload_register(function ($class) use ($registry) : void {
+    $registry->autoload($class);
 });
