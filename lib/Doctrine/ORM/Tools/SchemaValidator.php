@@ -60,6 +60,8 @@ class SchemaValidator
      * 3. Check if "referencedColumnName" attributes are really pointing to primary key columns.
      *
      * @return array
+     *
+     * @psalm-return array<empty, empty>
      */
     public function validateMapping()
     {

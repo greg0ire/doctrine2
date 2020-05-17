@@ -671,7 +671,9 @@ class XmlDriver extends FileDriver
      *
      * @param SimpleXMLElement $options The XML element.
      *
-     * @return mixed[] The options array.
+     * @return (array|bool|string)[] The options array.
+     *
+     * @psalm-return array<int|string, array|bool|string>
      */
     private function _parseOptions(SimpleXMLElement $options)
     {

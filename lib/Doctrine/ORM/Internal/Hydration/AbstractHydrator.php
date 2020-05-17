@@ -470,6 +470,8 @@ abstract class AbstractHydrator
 
     /**
      * @return string[]
+     *
+     * @psalm-return array<array-key, string>
      */
     private function getDiscriminatorValues(ClassMetadata $classMetadata) : array
     {

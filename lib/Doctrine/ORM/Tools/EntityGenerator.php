@@ -1158,7 +1158,7 @@ public function __construct(<params>)
     /**
      * @param ClassMetadataInfo $metadata
      *
-     * @return string|null
+     * @return null|string
      */
     protected function generateDiscriminatorMapAnnotation(ClassMetadataInfo $metadata)
     {
@@ -1883,7 +1883,7 @@ public function __construct(<params>)
     /**
      * @param array $fieldMapping
      *
-     * @return string|null
+     * @return null|string
      */
     private function nullableFieldExpression(array $fieldMapping)
     {

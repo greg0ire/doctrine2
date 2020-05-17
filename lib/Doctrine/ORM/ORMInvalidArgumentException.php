@@ -254,6 +254,8 @@ class ORMInvalidArgumentException extends \InvalidArgumentException
     /**
      * @param array  $associationMapping
      * @param object $entity
+     *
+     * @return string
      */
     private static function newEntityFoundThroughRelationshipMessage(array $associationMapping, $entity) : string
     {

@@ -172,9 +172,11 @@ class ConvertDoctrine1Schema
      * @param string|array      $column
      * @param ClassMetadataInfo $metadata
      *
-     * @return mixed[]
+     * @return (mixed|string|true)[]
      *
      * @throws ToolsException
+     *
+     * @psalm-return array<array-key, mixed|string|true>
      */
     private function convertColumn($className, $name, $column, ClassMetadataInfo $metadata)
     {

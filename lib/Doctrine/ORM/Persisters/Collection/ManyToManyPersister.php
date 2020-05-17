@@ -335,7 +335,7 @@ class ManyToManyPersister extends AbstractCollectionPersister
     /**
      * Generate ON condition
      *
-     * @param  array $mapping
+     * @param array $mapping
      *
      * @return string[]
      *
@@ -418,8 +418,7 @@ class ManyToManyPersister extends AbstractCollectionPersister
      *
      * @param \Doctrine\ORM\PersistentCollection $collection
      *
-     * @return string[]|string[][] ordered tuple containing the SQL to be executed and an array
-     *                             of types for bound parameters
+     * @return (string|string[])[]
      *
      * @psalm-return array{0: string, 1: list<string>}
      */
@@ -471,8 +470,7 @@ class ManyToManyPersister extends AbstractCollectionPersister
      *
      * @param \Doctrine\ORM\PersistentCollection $collection
      *
-     * @return string[]|string[][] ordered tuple containing the SQL to be executed and an array
-     *                             of types for bound parameters
+     * @return (string|string[])[]
      *
      * @psalm-return array{0: string, 1: list<string>}
      */
@@ -573,11 +571,7 @@ class ManyToManyPersister extends AbstractCollectionPersister
      * @param string                             $key
      * @param boolean                            $addFilters Whether the filter SQL should be included or not.
      *
-     * @return array ordered vector:
-     *                - quoted join table name
-     *                - where clauses to be added for filtering
-     *                - parameters to be bound for filtering
-     *                - types of the parameters to be bound for filtering
+     * @return ((mixed|string)[]|string)[]
      *
      * @psalm-return array{0: string, 1: list<string>, 2: list<mixed|string>, 3: list<string>}
      */
@@ -660,11 +654,7 @@ class ManyToManyPersister extends AbstractCollectionPersister
      * @param object                             $element
      * @param boolean                            $addFilters Whether the filter SQL should be included or not.
      *
-     * @return array ordered vector:
-     *                - quoted join table name
-     *                - where clauses to be added for filtering
-     *                - parameters to be bound for filtering
-     *                - types of the parameters to be bound for filtering
+     * @return ((mixed|string)[]|string)[]
      *
      * @psalm-return array{0: string, 1: list<string>, 2: list<mixed>, 3: list<string>}
      */

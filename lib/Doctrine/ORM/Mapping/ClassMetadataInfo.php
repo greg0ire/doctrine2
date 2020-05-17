@@ -807,6 +807,8 @@ class ClassMetadataInfo implements ClassMetadata
      *      - reflFields (ReflectionProperty array)
      *
      * @return string[] The names of all the fields that should be serialized.
+     *
+     * @psalm-return array{0: string, 1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string, 11: string, 12?: string, 13?: string, 14?: string, 15?: string, 16?: string, 17?: string, 18?: string, 19?: string, 20?: string, 21?: string, 22?: string, 23?: string, 24?: string, 25?: string, 26?: string, 27?: string, 28?: string, 29?: string, 30?: string, 31?: string, 32?: string, 33?: string, 34?: string}
      */
     public function __sleep()
     {
@@ -1585,12 +1587,12 @@ class ClassMetadataInfo implements ClassMetadata
      *
      * @param array $mapping The mapping to validate & complete.
      *
-     * @return mixed[] The validated & completed mapping.
+     * @return ((array-key|mixed|string[])[]|bool|int|mixed|null|string)[]
      *
      * @throws RuntimeException
      * @throws MappingException
      *
-     * @psalm-return array{isOwningSide: mixed, orphanRemoval: bool, isCascadeRemove: bool}
+     * @psalm-return array{mappedBy: mixed|null, inversedBy: mixed|null, isOwningSide: bool, sourceEntity: string, targetEntity: string, fieldName: mixed, fetch: int|mixed, cascade: array<array-key, string>, isCascadeRemove: bool, isCascadePersist: bool, isCascadeRefresh: bool, isCascadeMerge: bool, isCascadeDetach: bool, joinColumns?: array{0: array{name: string, referencedColumnName: string}}|mixed, id?: mixed, sourceToTargetKeyColumns?: array, joinColumnFieldNames?: array, targetToSourceKeyColumns?: array<array-key, array-key>, orphanRemoval: bool}
      */
     protected function _validateAndCompleteOneToOneMapping(array $mapping)
     {
@@ -1678,12 +1680,12 @@ class ClassMetadataInfo implements ClassMetadata
      *
      * @param array $mapping The mapping to validate and complete.
      *
-     * @return mixed[] The validated and completed mapping.
+     * @return (bool|int|mixed|null|string|string[])[]
      *
      * @throws MappingException
      * @throws InvalidArgumentException
      *
-     * @psalm-return array{mappedBy: mixed, orphanRemoval: bool, isCascadeRemove: bool}
+     * @psalm-return array{mappedBy: mixed, inversedBy: mixed|null, isOwningSide: bool, sourceEntity: string, targetEntity: string, fieldName: mixed, fetch: int|mixed, cascade: array<array-key, string>, isCascadeRemove: bool, isCascadePersist: bool, isCascadeRefresh: bool, isCascadeMerge: bool, isCascadeDetach: bool, orphanRemoval: bool}
      */
     protected function _validateAndCompleteOneToManyMapping(array $mapping)
     {
@@ -1707,11 +1709,11 @@ class ClassMetadataInfo implements ClassMetadata
      *
      * @param array $mapping The mapping to validate & complete.
      *
-     * @return mixed[] The validated & completed mapping.
+     * @return ((mixed|string|string[][])[]|\ArrayAccess|bool|int|mixed|null|string)[]
      *
      * @throws \InvalidArgumentException
      *
-     * @psalm-return array{isOwningSide: mixed, orphanRemoval: bool}
+     * @psalm-return array{mappedBy: mixed|null, inversedBy: mixed|null, isOwningSide: bool, sourceEntity: string, targetEntity: string, fieldName: mixed, fetch: int|mixed, cascade: array<array-key, string>, isCascadeRemove: bool, isCascadePersist: bool, isCascadeRefresh: bool, isCascadeMerge: bool, isCascadeDetach: bool, joinTable?: \ArrayAccess|array{inverseJoinColumns: array{0: array{name: string, referencedColumnName: string, onDelete: string}}|mixed}|mixed, joinTableColumns?: list<mixed>, isOnDeleteCascade?: true, relationToSourceKeyColumns?: array, relationToTargetKeyColumns?: array, orphanRemoval: bool}
      */
     protected function _validateAndCompleteManyToManyMapping(array $mapping)
     {
@@ -3381,6 +3383,7 @@ class ClassMetadataInfo implements ClassMetadata
      * Gets the sequence name based on class metadata.
      *
      * @param AbstractPlatform $platform
+     *
      * @return string
      *
      * @todo Sequence names should be computed in DBAL depending on the platform

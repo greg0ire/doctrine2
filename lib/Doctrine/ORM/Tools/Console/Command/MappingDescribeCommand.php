@@ -134,6 +134,8 @@ EOT
      * @param EntityManagerInterface $entityManager
      *
      * @return string[]
+     *
+     * @psalm-return array<array-key, string>
      */
     private function getMappedEntities(EntityManagerInterface $entityManager) : array
     {

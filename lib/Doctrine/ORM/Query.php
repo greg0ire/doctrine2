@@ -577,6 +577,8 @@ final class Query extends AbstractQuery
      * Sets a DQL query string.
      *
      * @param string $dqlQuery DQL Query.
+     *
+     * @return self
      */
     public function setDQL($dqlQuery) : self
     {
@@ -721,6 +723,8 @@ final class Query extends AbstractQuery
      * @param int $lockMode
      *
      * @throws TransactionRequiredException
+     *
+     * @return self
      */
     public function setLockMode($lockMode) : self
     {

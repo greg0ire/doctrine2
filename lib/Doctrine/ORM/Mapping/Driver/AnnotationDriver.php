@@ -558,7 +558,9 @@ class AnnotationDriver extends AbstractAnnotationDriver
      *
      * @param \ReflectionMethod $method
      *
-     * @return callable[]
+     * @return string[][]
+     *
+     * @psalm-return list<array{0: string, 1: string}>
      */
     private function getMethodCallbacks(\ReflectionMethod $method)
     {
@@ -636,7 +638,7 @@ class AnnotationDriver extends AbstractAnnotationDriver
      * @param string $fieldName
      * @param Mapping\Column $column
      *
-     * @return mixed[]
+     * @return (array|bool|int|mixed|string)[]
      *
      * @psalm-return array{
      *                   fieldName: string,

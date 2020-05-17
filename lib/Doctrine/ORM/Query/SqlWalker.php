@@ -2308,7 +2308,9 @@ class SqlWalker implements TreeWalker
     /**
      * @param ClassMetadataInfo $rootClass
      * @param AST\InstanceOfExpression $instanceOfExpr
+     *
      * @return string The list in parentheses of valid child discriminators from the given class
+     *
      * @throws QueryException
      */
     private function getChildDiscriminatorsFromClassMetadata(ClassMetadataInfo $rootClass, AST\InstanceOfExpression $instanceOfExpr): string

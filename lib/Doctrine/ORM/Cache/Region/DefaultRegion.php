@@ -126,6 +126,7 @@ class DefaultRegion implements Region
 
     /**
      * @param CacheKey $key
+     *
      * @return string
      */
     protected function getCacheEntryKey(CacheKey $key)

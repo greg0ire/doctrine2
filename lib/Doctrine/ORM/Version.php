@@ -44,8 +44,7 @@ class Version
      *
      * @param string $version Doctrine version to compare.
      *
-     * @return int Returns -1 if older, 0 if it is the same, 1 if version
-     *             passed as argument is newer.
+     * @return int Returns -1 if older, 0 if it is the same, 1 if version passed as argument is newer.
      */
     public static function compare($version)
     {

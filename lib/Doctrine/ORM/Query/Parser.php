@@ -3310,7 +3310,7 @@ class Parser
     /**
      * ComparisonOperator ::= "=" | "<" | "<=" | "<>" | ">" | ">=" | "!="
      *
-     * @return string
+     * @return null|string
      */
     public function ComparisonOperator()
     {

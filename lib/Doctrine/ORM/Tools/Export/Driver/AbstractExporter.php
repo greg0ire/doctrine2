@@ -188,7 +188,7 @@ abstract class AbstractExporter
     /**
      * @param int $type
      *
-     * @return string
+     * @return null|string
      */
     protected function _getInheritanceTypeString($type)
     {
@@ -210,7 +210,7 @@ abstract class AbstractExporter
     /**
      * @param int $mode
      *
-     * @return string
+     * @return null|string
      */
     protected function _getFetchModeString($mode)
     {
@@ -229,7 +229,7 @@ abstract class AbstractExporter
     /**
      * @param int $policy
      *
-     * @return string
+     * @return null|string
      */
     protected function _getChangeTrackingPolicyString($policy)
     {
@@ -248,7 +248,7 @@ abstract class AbstractExporter
     /**
      * @param int $type
      *
-     * @return string
+     * @return null|string
      */
     protected function _getIdGeneratorTypeString($type)
     {
