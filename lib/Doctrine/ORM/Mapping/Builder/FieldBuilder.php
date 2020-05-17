@@ -74,7 +74,7 @@ class FieldBuilder
      *
      * @param int $length
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function length($length)
     {
@@ -88,7 +88,7 @@ class FieldBuilder
      *
      * @param bool $flag
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function nullable($flag = true)
     {
@@ -102,7 +102,7 @@ class FieldBuilder
      *
      * @param bool $flag
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function unique($flag = true)
     {
@@ -116,7 +116,7 @@ class FieldBuilder
      *
      * @param string $name
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function columnName($name)
     {
@@ -130,7 +130,7 @@ class FieldBuilder
      *
      * @param int $p
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function precision($p)
     {
@@ -144,7 +144,7 @@ class FieldBuilder
      *
      * @param int $s
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function scale($s)
     {
@@ -167,7 +167,7 @@ class FieldBuilder
     /**
      * Sets field as primary key.
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function makePrimaryKey()
     {
@@ -182,7 +182,7 @@ class FieldBuilder
      * @param string $name
      * @param mixed  $value
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function option($name, $value)
     {
@@ -194,7 +194,7 @@ class FieldBuilder
     /**
      * @param string $strategy
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function generatedValue($strategy = 'AUTO')
     {
@@ -206,7 +206,7 @@ class FieldBuilder
     /**
      * Sets field versioned.
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function isVersionField()
     {
@@ -222,7 +222,7 @@ class FieldBuilder
      * @param int    $allocationSize
      * @param int    $initialValue
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function setSequenceGenerator($sequenceName, $allocationSize = 1, $initialValue = 1)
     {
@@ -240,7 +240,7 @@ class FieldBuilder
      *
      * @param string $def
      *
-     * @return FieldBuilder
+     * @return self
      */
     public function columnDefinition($def)
     {

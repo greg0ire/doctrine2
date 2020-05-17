@@ -32,7 +32,7 @@ class OneToManyAssociationBuilder extends AssociationBuilder
     /**
      * @param array $fieldNames
      *
-     * @return OneToManyAssociationBuilder
+     * @return self
      */
     public function setOrderBy(array $fieldNames)
     {
@@ -44,7 +44,7 @@ class OneToManyAssociationBuilder extends AssociationBuilder
     /**
      * @param string $fieldName
      *
-     * @return OneToManyAssociationBuilder
+     * @return self
      */
     public function setIndexBy($fieldName)
     {

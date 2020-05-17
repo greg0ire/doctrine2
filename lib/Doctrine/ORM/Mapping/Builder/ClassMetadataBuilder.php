@@ -57,7 +57,7 @@ class ClassMetadataBuilder
     /**
      * Marks the class as mapped superclass.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setMappedSuperClass()
     {
@@ -70,7 +70,7 @@ class ClassMetadataBuilder
     /**
      * Marks the class as embeddable.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setEmbeddable()
     {
@@ -107,7 +107,7 @@ class ClassMetadataBuilder
      *
      * @param string $repositoryClassName
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setCustomRepositoryClass($repositoryClassName)
     {
@@ -119,7 +119,7 @@ class ClassMetadataBuilder
     /**
      * Marks class read only.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setReadOnly()
     {
@@ -133,7 +133,7 @@ class ClassMetadataBuilder
      *
      * @param string $name
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setTable($name)
     {
@@ -148,7 +148,7 @@ class ClassMetadataBuilder
      * @param array  $columns
      * @param string $name
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function addIndex(array $columns, $name)
     {
@@ -167,7 +167,7 @@ class ClassMetadataBuilder
      * @param array  $columns
      * @param string $name
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function addUniqueConstraint(array $columns, $name)
     {
@@ -186,7 +186,7 @@ class ClassMetadataBuilder
      * @param string $name
      * @param string $dqlQuery
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function addNamedQuery($name, $dqlQuery)
     {
@@ -203,7 +203,7 @@ class ClassMetadataBuilder
     /**
      * Sets class as root of a joined table inheritance hierarchy.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setJoinedTableInheritance()
     {
@@ -215,7 +215,7 @@ class ClassMetadataBuilder
     /**
      * Sets class as root of a single table inheritance hierarchy.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setSingleTableInheritance()
     {
@@ -231,7 +231,7 @@ class ClassMetadataBuilder
      * @param string $type
      * @param int    $length
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setDiscriminatorColumn($name, $type = 'string', $length = 255)
     {
@@ -252,7 +252,7 @@ class ClassMetadataBuilder
      * @param string $name
      * @param string $class
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function addDiscriminatorMapClass($name, $class)
     {
@@ -264,7 +264,7 @@ class ClassMetadataBuilder
     /**
      * Sets deferred explicit change tracking policy.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setChangeTrackingPolicyDeferredExplicit()
     {
@@ -276,7 +276,7 @@ class ClassMetadataBuilder
     /**
      * Sets notify change tracking policy.
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function setChangeTrackingPolicyNotify()
     {
@@ -291,7 +291,7 @@ class ClassMetadataBuilder
      * @param string $methodName
      * @param string $event
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function addLifecycleEvent($methodName, $event)
     {
@@ -307,7 +307,7 @@ class ClassMetadataBuilder
      * @param string $type
      * @param array  $mapping
      *
-     * @return ClassMetadataBuilder
+     * @return self
      */
     public function addField($name, $type, array $mapping = [])
     {

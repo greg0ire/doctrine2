@@ -66,7 +66,7 @@ abstract class Base
     /**
      * @param array $args
      *
-     * @return Base
+     * @return self
      */
     public function addMultiple($args = [])
     {
@@ -80,7 +80,7 @@ abstract class Base
     /**
      * @param mixed $arg
      *
-     * @return Base
+     * @return self
      *
      * @throws \InvalidArgumentException
      */
