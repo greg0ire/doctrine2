@@ -330,7 +330,7 @@ abstract class OrmFunctionalTestCase extends OrmTestCase
      *
      * @return void
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $conn = static::$_sharedConn;
 
@@ -639,7 +639,7 @@ abstract class OrmFunctionalTestCase extends OrmTestCase
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setUpDBALTypes();
 
@@ -782,13 +782,9 @@ abstract class OrmFunctionalTestCase extends OrmTestCase
     }
 
     /**
-     * @param \Throwable $e
-     *
-     * @return void
-     *
      * @throws \Throwable
      */
-    protected function onNotSuccessfulTest(\Throwable $e)
+    protected function onNotSuccessfulTest(\Throwable $e): void
     {
         if ($e instanceof AssertionFailedError) {
             throw $e;

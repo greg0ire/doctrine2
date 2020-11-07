@@ -9,7 +9,7 @@ use Doctrine\Tests\Models\Generic\DateTimeModel;
  */
 class DDC657Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useModelSet('generic');
         parent::setUp();

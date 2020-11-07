@@ -9,7 +9,7 @@ use Doctrine\ORM\Query;
  */
 class DDC2655Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->useModelSet('cms');
         parent::setUp();

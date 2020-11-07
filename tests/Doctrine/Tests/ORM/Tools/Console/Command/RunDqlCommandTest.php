@@ -32,7 +32,7 @@ class RunDqlCommandTest extends OrmFunctionalTestCase
      */
     private $tester;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useModelSet('generic');
 

@@ -28,7 +28,7 @@ class GenerateRepositoriesCommandTest extends OrmFunctionalTestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -47,7 +47,7 @@ class GenerateRepositoriesCommandTest extends OrmFunctionalTestCase
     /**
      * @inheritdoc
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $dirs = [];
 

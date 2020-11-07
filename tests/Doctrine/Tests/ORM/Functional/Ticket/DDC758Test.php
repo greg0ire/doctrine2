@@ -11,7 +11,7 @@ class DDC758Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
     use VerifyDeprecations;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->markTestSkipped('Destroys testsuite');
         $this->useModelSet("cms");

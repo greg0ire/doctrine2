@@ -13,7 +13,7 @@ class DDC1276Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
     use VerifyDeprecations;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->useModelSet('cms');
         parent::setUp();

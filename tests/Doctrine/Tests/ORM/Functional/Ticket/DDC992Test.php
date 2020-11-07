@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class DDC992Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         try {

@@ -14,7 +14,7 @@ use function sprintf;
  */
 class QueryDqlFunctionTest extends OrmFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useModelSet('company');
         parent::setUp();

@@ -19,7 +19,7 @@ use Doctrine\Tests\OrmFunctionalTestCase;
  */
 class ManyToManyBasicAssociationTest extends OrmFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useModelSet('cms');
         parent::setUp();

@@ -26,7 +26,7 @@ use function iterator_to_array;
  */
 class PaginationTest extends OrmFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useModelSet('cms');
         $this->useModelSet('pagination');
@@ -711,7 +711,7 @@ class PaginationTest extends OrmFunctionalTestCase
     public function testPaginationWithSubSelectOrderByExpression($useOutputWalker, $fetchJoinCollection)
     {
         $query = $this->_em->createQuery(
-            "SELECT u, 
+            "SELECT u,
                 (
                     SELECT MAX(a.version)
                     FROM Doctrine\\Tests\\Models\\CMS\\CmsArticle a

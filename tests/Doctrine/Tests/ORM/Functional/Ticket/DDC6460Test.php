@@ -13,7 +13,7 @@ use Doctrine\ORM\Proxy\Proxy;
 
 class DDC6460Test extends \Doctrine\Tests\OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

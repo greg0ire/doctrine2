@@ -24,7 +24,7 @@ class AttachEntityListenersListenerTest extends OrmTestCase
      */
     private $factory;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->listener = new AttachEntityListenersListener();
         $driver         = $this->createAnnotationDriver();

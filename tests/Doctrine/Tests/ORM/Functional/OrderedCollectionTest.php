@@ -12,7 +12,7 @@ class OrderedCollectionTest extends OrmFunctionalTestCase
 {
     protected $locations = [];
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->useModelSet('routing');
         parent::setUp();

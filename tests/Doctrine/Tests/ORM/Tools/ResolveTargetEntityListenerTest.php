@@ -24,7 +24,7 @@ class ResolveTargetEntityListenerTest extends OrmTestCase
      */
     private $factory;
 
-    public function setUp()
+    public function setUp(): void
     {
         $annotationDriver = $this->createAnnotationDriver();
 

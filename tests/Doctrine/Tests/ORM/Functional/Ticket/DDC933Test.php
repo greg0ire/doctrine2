@@ -10,7 +10,7 @@ use Doctrine\Tests\TestUtil;
 
 class DDC933Test extends OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->useModelSet('company');
 

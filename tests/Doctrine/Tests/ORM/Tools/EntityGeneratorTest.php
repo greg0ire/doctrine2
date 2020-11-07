@@ -26,7 +26,7 @@ class EntityGeneratorTest extends OrmTestCase
     private $_tmpDir;
     private $_namespace;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->_namespace = uniqid("doctrine_");
         $this->_tmpDir = \sys_get_temp_dir();
@@ -40,7 +40,7 @@ class EntityGeneratorTest extends OrmTestCase
         $this->_generator->setFieldVisibility(EntityGenerator::FIELD_VISIBLE_PROTECTED);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $ri = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->_tmpDir . '/' . $this->_namespace));
         foreach ($ri AS $file) {

@@ -9,7 +9,7 @@ use Doctrine\Tests\OrmFunctionalTestCase;
 
 class CompositePrimaryKeyWithAssociationsTest extends OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->useModelSet('geonames');
         parent::setUp();

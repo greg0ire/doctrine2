@@ -11,7 +11,7 @@ class ParserResultTest extends TestCase
 {
     public $parserResult;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parserResult = new ParserResult();
     }

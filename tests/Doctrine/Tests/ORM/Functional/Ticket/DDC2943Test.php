@@ -12,7 +12,7 @@ use Doctrine\ORM\Cache;
  */
 class DDC2943Test extends OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->enableSecondLevelCache();
         $this->useModelSet('cache');

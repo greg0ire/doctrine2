@@ -10,7 +10,7 @@ use Doctrine\Tests\OrmFunctionalTestCase;
  */
 class SequenceGeneratorTest extends OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

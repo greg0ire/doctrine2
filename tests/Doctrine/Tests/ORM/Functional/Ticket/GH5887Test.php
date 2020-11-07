@@ -12,7 +12,7 @@ use Doctrine\Tests\OrmFunctionalTestCase;
  */
 class GH5887Test extends OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

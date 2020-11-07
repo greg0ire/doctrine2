@@ -13,7 +13,8 @@ use Doctrine\Tests\OrmFunctionalTestCase;
  */
 class DDC3634Test extends OrmFunctionalTestCase {
 
-    protected function setUp() {
+    protected function setUp(): void
+    {
         parent::setUp();
 
         $metadata = $this->_em->getClassMetadata(DDC3634Entity::class);

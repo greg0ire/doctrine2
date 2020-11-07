@@ -29,13 +29,13 @@ class EntityRepositoryTest extends OrmFunctionalTestCase
 {
     use VerifyDeprecations;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useModelSet('cms');
         parent::setUp();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if ($this->_em) {
             $this->_em->getConfiguration()->setEntityNamespaces([]);

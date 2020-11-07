@@ -11,7 +11,8 @@ use Doctrine\Tests\Models\DDC3597\DDC3597Root;
  */
 class DDC3597Test extends \Doctrine\Tests\OrmFunctionalTestCase {
 
-    protected function setUp() {
+    protected function setUp(): void
+    {
         parent::setUp();
         $this->_schemaTool->createSchema(
             [

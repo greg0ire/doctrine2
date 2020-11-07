@@ -6,7 +6,7 @@ use Doctrine\Tests\OrmFunctionalTestCase;
 
 class DDC1181Test extends OrmFunctionalTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->_schemaTool->createSchema(

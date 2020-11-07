@@ -32,7 +32,7 @@ class InfoCommandTest extends OrmFunctionalTestCase
      */
     private $tester;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

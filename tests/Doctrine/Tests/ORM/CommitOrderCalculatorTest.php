@@ -17,7 +17,7 @@ class CommitOrderCalculatorTest extends OrmTestCase
 {
     private $_calc;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_calc = new CommitOrderCalculator();
     }
