@@ -20,6 +20,7 @@
 
 namespace Doctrine\ORM;
 
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\EventManager;
@@ -2494,7 +2495,11 @@ class UnitOfWork implements PropertyChangedListener
 
                 $entityVersion = $class->reflFields[$class->versionField]->getValue($entity);
 
-                if ($entityVersion !== $lockVersion) {
+                if ($entityVersion instanceof DateTimeInterface && $lockVersion instanceof DateTimeInterface) {
+                    if ($entityVersion->getTimestamp() !== $lockVersion->getTimestamp()) {
+                        throw OptimisticLockException::lockFailedVersionMismatch($entity, $lockVersion, $entityVersion);
+                    }
+                } elseif ($entityVersion !== $lockVersion) {
                     throw OptimisticLockException::lockFailedVersionMismatch($entity, $lockVersion, $entityVersion);
                 }
 
