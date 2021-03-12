@@ -6,6 +6,7 @@ on:
 
 env:
   fail-fast: true
+  EXPECT_DB_DRIVER: "${{ matrix.extension }}"
 
 jobs:
   phpunit-smoke-check:
@@ -21,6 +22,8 @@ jobs:
           - "8.0"
         deps:
           - "highest"
+        extension:
+          - "pdo_sqlite"
         include:
           - deps: "lowest"
             php-version: "7.3"
@@ -48,7 +51,6 @@ jobs:
         run: "vendor/bin/phpunit -c ci/github/phpunit/sqlite.xml --coverage-clover=coverage-no-cache.xml"
         env:
             ENABLE_SECOND_LEVEL_CACHE: 0
-            EXPECT_DB_DRIVER: pdo_sqlite
 
       - name: "Run PHPUnit with Second Level Cache"
         run: "vendor/bin/phpunit -c ci/github/phpunit/sqlite.xml --exclude-group performance,non-cacheable,locking_functional --coverage-clover=coverage-cache.xml"
@@ -74,6 +76,8 @@ jobs:
         postgres-version:
           - "9.6"
           - "13"
+        extension:
+          - "pdo_pgsql"
 
     services:
       postgres:
@@ -105,8 +109,6 @@ jobs:
 
       - name: "Run PHPUnit"
         run: "vendor/bin/phpunit -c ci/github/phpunit/pdo_pgsql.xml --coverage-clover=coverage.xml"
-        env:
-          EXPECT_DB_DRIVER: pdo_pgsql
 
       - name: "Upload coverage file"
         uses: "actions/upload-artifact@v2"
@@ -162,8 +164,6 @@ jobs:
 
       - name: "Run PHPUnit"
         run: "vendor/bin/phpunit -c ci/github/phpunit/${{ matrix.extension }}.xml --coverage-clover=coverage.xml"
-        env:
-          EXPECT_DB_DRIVER: ${{ matrix.extension }}
 
       - name: "Upload coverage file"
         uses: "actions/upload-artifact@v2"
@@ -221,13 +221,11 @@ jobs:
         run: "vendor/bin/phpunit -c ci/github/phpunit/${{ matrix.extension }}.xml --coverage-clover=coverage-no-cache.xml"
         env:
             ENABLE_SECOND_LEVEL_CACHE: 0
-            EXPECT_DB_DRIVER: ${{ matrix.extension }}
 
       - name: "Run PHPUnit with Second Level Cache"
         run: "vendor/bin/phpunit -c ci/github/phpunit/${{ matrix.extension }}.xml --exclude-group performance,non-cacheable,locking_functional --coverage-clover=coverage-no-cache.xml"
         env:
             ENABLE_SECOND_LEVEL_CACHE: 1
-            EXPECT_DB_DRIVER: ${{ matrix.extension }}
 
       - name: "Upload coverage files"
         uses: "actions/upload-artifact@v2"
