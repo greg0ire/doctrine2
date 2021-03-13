@@ -513,10 +513,8 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * Computes the changesets of all entities scheduled for insertion.
-     *
-     * @return void
      */
-    private function computeScheduleInsertsChangeSets()
+    private function computeScheduleInsertsChangeSets(): void
     {
         foreach ($this->entityInsertions as $entity) {
             $class = $this->em->getClassMetadata(get_class($entity));
@@ -533,13 +531,9 @@ class UnitOfWork implements PropertyChangedListener
      * 3. Proxies are skipped.
      * 4. Only if entity is properly managed.
      *
-     * @param object $entity
-     *
-     * @return void
-     *
      * @throws InvalidArgumentException
      */
-    private function computeSingleEntityChangeSet($entity)
+    private function computeSingleEntityChangeSet(object $entity): void
     {
         $state = $this->getEntityState($entity);
 
@@ -964,13 +958,7 @@ class UnitOfWork implements PropertyChangedListener
         }
     }
 
-    /**
-     * @param ClassMetadata $class
-     * @param object        $entity
-     *
-     * @return void
-     */
-    private function persistNew($class, $entity)
+    private function persistNew(ClassMetadata $class, object $entity): void
     {
         $oid    = spl_object_hash($entity);
         $invoke = $this->listenersInvoker->getSubscribedSystems($class, Events::prePersist);
@@ -1092,12 +1080,8 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * Executes all entity insertions for entities of the specified type.
-     *
-     * @param ClassMetadata $class
-     *
-     * @return void
      */
-    private function executeInserts($class)
+    private function executeInserts(ClassMetadata $class): void
     {
         $entities  = [];
         $className = $class->name;
@@ -1156,11 +1140,11 @@ class UnitOfWork implements PropertyChangedListener
         }
     }
 
-    /**
-     * @param object $entity
-     */
-    private function addToEntityIdentifiersAndEntityMap(ClassMetadata $class, string $oid, $entity): void
-    {
+    private function addToEntityIdentifiersAndEntityMap(
+        ClassMetadata $class,
+        string $oid,
+        object $entity
+    ): void {
         $identifier = [];
 
         foreach ($class->getIdentifierFieldNames() as $idField) {
@@ -1182,12 +1166,8 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * Executes all entity updates for entities of the specified type.
-     *
-     * @param ClassMetadata $class
-     *
-     * @return void
      */
-    private function executeUpdates($class)
+    private function executeUpdates(ClassMetadata $class): void
     {
         $className        = $class->name;
         $persister        = $this->getEntityPersister($className);
@@ -1219,12 +1199,8 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * Executes all entity deletions for entities of the specified type.
-     *
-     * @param ClassMetadata $class
-     *
-     * @return void
      */
-    private function executeDeletions($class)
+    private function executeDeletions(ClassMetadata $class): void
     {
         $className = $class->name;
         $persister = $this->getEntityPersister($className);
@@ -2039,15 +2015,13 @@ class UnitOfWork implements PropertyChangedListener
     }
 
     /**
-     * @param object $entity
-     * @param object $managedCopy
-     *
-     * @return void
-     *
      * @throws OptimisticLockException
      */
-    private function ensureVersionMatch(ClassMetadata $class, $entity, $managedCopy)
-    {
+    private function ensureVersionMatch(
+        ClassMetadata $class,
+        object $entity,
+        object $managedCopy
+    ): void {
         if (! ($class->isVersioned && $this->isLoaded($managedCopy) && $this->isLoaded($entity))) {
             return;
         }
@@ -2067,12 +2041,8 @@ class UnitOfWork implements PropertyChangedListener
 
     /**
      * Tests if an entity is loaded - must either be a loaded proxy or not a proxy
-     *
-     * @param object $entity
-     *
-     * @return bool
      */
-    private function isLoaded($entity)
+    private function isLoaded(object $entity): bool
     {
         return ! ($entity instanceof Proxy) || $entity->__isInitialized();
     }
@@ -2125,14 +2095,14 @@ class UnitOfWork implements PropertyChangedListener
     /**
      * Executes a detach operation on the given entity.
      *
-     * @param object  $entity
      * @param mixed[] $visited
      * @param bool    $noCascade if true, don't cascade detach operation.
-     *
-     * @return void
      */
-    private function doDetach($entity, array &$visited, $noCascade = false)
-    {
+    private function doDetach(
+        object $entity,
+        array &$visited,
+        bool $noCascade = false
+    ): void {
         $oid = spl_object_hash($entity);
 
         if (isset($visited[$oid])) {
@@ -2614,12 +2584,7 @@ class UnitOfWork implements PropertyChangedListener
         return isset($this->collectionDeletions[spl_object_hash($coll)]);
     }
 
-    /**
-     * @param ClassMetadata $class
-     *
-     * @return ObjectManagerAware|object
-     */
-    private function newInstance($class)
+    private function newInstance(ClassMetadata $class): object
     {
         $entity = $class->newInstance();
 

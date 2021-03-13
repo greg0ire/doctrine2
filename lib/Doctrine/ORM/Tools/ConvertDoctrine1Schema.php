@@ -107,8 +107,10 @@ class ConvertDoctrine1Schema
     /**
      * @param mixed[] $mappingInformation
      */
-    private function convertToClassMetadataInfo(string $className, $mappingInformation): ClassMetadataInfo
-    {
+    private function convertToClassMetadataInfo(
+        string $className,
+        array $mappingInformation
+    ): ClassMetadataInfo {
         $metadata = new ClassMetadataInfo($className);
 
         $this->convertTableName($className, $mappingInformation, $metadata);
@@ -137,13 +139,13 @@ class ConvertDoctrine1Schema
     }
 
     /**
-     * @param string  $className
      * @param mixed[] $model
-     *
-     * @return void
      */
-    private function convertColumns($className, array $model, ClassMetadataInfo $metadata)
-    {
+    private function convertColumns(
+        string $className,
+        array $model,
+        ClassMetadataInfo $metadata
+    ): void {
         $id = false;
 
         if (isset($model['columns']) && $model['columns']) {
@@ -169,16 +171,18 @@ class ConvertDoctrine1Schema
     }
 
     /**
-     * @param string         $className
-     * @param string         $name
      * @param string|mixed[] $column
      *
      * @return mixed[]
      *
      * @throws ToolsException
      */
-    private function convertColumn($className, $name, $column, ClassMetadataInfo $metadata)
-    {
+    private function convertColumn(
+        string $className,
+        string $name,
+        $column,
+        ClassMetadataInfo $metadata
+    ): array {
         if (is_string($column)) {
             $string         = $column;
             $column         = [];
@@ -259,13 +263,13 @@ class ConvertDoctrine1Schema
     }
 
     /**
-     * @param string  $className
      * @param mixed[] $model
-     *
-     * @return void
      */
-    private function convertIndexes($className, array $model, ClassMetadataInfo $metadata)
-    {
+    private function convertIndexes(
+        string $className,
+        array $model,
+        ClassMetadataInfo $metadata
+    ): void {
         if (empty($model['indexes'])) {
             return;
         }
@@ -281,13 +285,13 @@ class ConvertDoctrine1Schema
     }
 
     /**
-     * @param string  $className
      * @param mixed[] $model
-     *
-     * @return void
      */
-    private function convertRelations($className, array $model, ClassMetadataInfo $metadata)
-    {
+    private function convertRelations(
+        string $className,
+        array $model,
+        ClassMetadataInfo $metadata
+    ): void {
         if (empty($model['relations'])) {
             return;
         }

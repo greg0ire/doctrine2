@@ -137,10 +137,8 @@ class DebugUnitOfWorkListener
 
     /**
      * @param mixed $var
-     *
-     * @return string
      */
-    private function getType($var)
+    private function getType($var): string
     {
         if (is_object($var)) {
             $refl = new ReflectionObject($var);
@@ -151,12 +149,7 @@ class DebugUnitOfWorkListener
         return gettype($var);
     }
 
-    /**
-     * @param object $entity
-     *
-     * @return string
-     */
-    private function getIdString($entity, UnitOfWork $uow)
+    private function getIdString(object $entity, UnitOfWork $uow): string
     {
         if ($uow->isInIdentityMap($entity)) {
             $ids      = $uow->getEntityIdentifier($entity);

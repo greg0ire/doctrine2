@@ -60,7 +60,7 @@ final class NativeQuery extends AbstractQuery
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function _doExecute()
     {

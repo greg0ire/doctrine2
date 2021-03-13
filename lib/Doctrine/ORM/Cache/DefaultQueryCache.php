@@ -344,11 +344,9 @@ class DefaultQueryCache implements QueryCache
      * @param array<string,mixed> $assoc
      * @param mixed               $assocValue
      *
-     * @return mixed[]|null
-     *
      * @psalm-return array{targetEntity: string, type: mixed, list?: array[], identifier?: array}|null
      */
-    private function storeAssociationCache(QueryCacheKey $key, array $assoc, $assocValue)
+    private function storeAssociationCache(QueryCacheKey $key, array $assoc, $assocValue): ?array
     {
         $assocPersister = $this->uow->getEntityPersister($assoc['targetEntity']);
         $assocMetadata  = $assocPersister->getClassMetadata();
@@ -398,13 +396,13 @@ class DefaultQueryCache implements QueryCache
     }
 
     /**
-     * @param string $assocAlias
-     * @param object $entity
-     *
      * @return array<object>|object
      */
-    private function getAssociationValue(ResultSetMapping $rsm, $assocAlias, $entity)
-    {
+    private function getAssociationValue(
+        ResultSetMapping $rsm,
+        string $assocAlias,
+        object $entity
+    ) {
         $path  = [];
         $alias = $assocAlias;
 

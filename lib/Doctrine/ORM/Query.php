@@ -228,10 +228,8 @@ final class Query extends AbstractQuery
      * Parses the DQL query, if necessary, and stores the parser result.
      *
      * Note: Populates $this->_parserResult as a side-effect.
-     *
-     * @return ParserResult
      */
-    private function parse()
+    private function parse(): ParserResult
     {
         $types = [];
 
@@ -279,7 +277,7 @@ final class Query extends AbstractQuery
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function _doExecute()
     {
@@ -335,7 +333,7 @@ final class Query extends AbstractQuery
         array $sqlParams,
         array $types,
         array $connectionParams
-    ) {
+    ): void {
         if ($this->_queryCacheProfile === null || ! $this->getExpireResultCache()) {
             return;
         }
@@ -353,7 +351,7 @@ final class Query extends AbstractQuery
     /**
      * Evict entity cache region
      */
-    private function evictEntityCacheRegion()
+    private function evictEntityCacheRegion(): void
     {
         $AST = $this->getAST();
 
@@ -494,7 +492,7 @@ final class Query extends AbstractQuery
      * @return Cache|null The cache driver used for query caching or NULL, if
      * this Query does not use query caching.
      */
-    public function getQueryCacheDriver()
+    public function getQueryCacheDriver(): ?Cache
     {
         if ($this->queryCache) {
             return $this->queryCache;
@@ -523,10 +521,8 @@ final class Query extends AbstractQuery
 
     /**
      * Retrieves the lifetime of resultset cache.
-     *
-     * @return int
      */
-    public function getQueryCacheLifetime()
+    public function getQueryCacheLifetime(): int
     {
         return $this->queryCacheTTL;
     }
@@ -547,10 +543,8 @@ final class Query extends AbstractQuery
 
     /**
      * Retrieves if the query cache is active or not.
-     *
-     * @return bool
      */
-    public function getExpireQueryCache()
+    public function getExpireQueryCache(): bool
     {
         return $this->expireQueryCache;
     }
@@ -558,7 +552,7 @@ final class Query extends AbstractQuery
     /**
      * @override
      */
-    public function free()
+    public function free(): void
     {
         parent::free();
 
@@ -583,10 +577,8 @@ final class Query extends AbstractQuery
 
     /**
      * Returns the DQL query that is represented by this query object.
-     *
-     * @return string|null
      */
-    public function getDQL()
+    public function getDQL(): ?string
     {
         return $this->dql;
     }
@@ -601,7 +593,7 @@ final class Query extends AbstractQuery
      *
      * @return int The query state.
      */
-    public function getState()
+    public function getState(): int
     {
         return $this->_state;
     }
@@ -610,10 +602,8 @@ final class Query extends AbstractQuery
      * Method to check if an arbitrary piece of DQL exists
      *
      * @param string $dql Arbitrary piece of DQL to check for.
-     *
-     * @return bool
      */
-    public function contains($dql)
+    public function contains($dql): bool
     {
         return stripos($this->getDQL(), $dql) !== false;
     }
@@ -639,7 +629,7 @@ final class Query extends AbstractQuery
      *
      * @return int|null The position of the first result.
      */
-    public function getFirstResult()
+    public function getFirstResult(): ?int
     {
         return $this->firstResult;
     }
@@ -665,7 +655,7 @@ final class Query extends AbstractQuery
      *
      * @return int|null Maximum number of results.
      */
-    public function getMaxResults()
+    public function getMaxResults(): ?int
     {
         return $this->maxResults;
     }
@@ -679,11 +669,9 @@ final class Query extends AbstractQuery
      * @param ArrayCollection|mixed[]|null $parameters    The query parameters.
      * @param string|int                   $hydrationMode The hydration mode to use.
      *
-     * @return IterableResult
-     *
      * @psalm-param ArrayCollection<int, Parameter>|array<string, mixed>|null $parameters
      */
-    public function iterate($parameters = null, $hydrationMode = self::HYDRATE_OBJECT)
+    public function iterate($parameters = null, $hydrationMode = self::HYDRATE_OBJECT): IterableResult
     {
         $this->setHint(self::HINT_INTERNAL_ITERATION, true);
 
@@ -701,7 +689,7 @@ final class Query extends AbstractQuery
     /**
      * {@inheritdoc}
      */
-    public function setHint($name, $value)
+    public function setHint($name, $value): self
     {
         $this->_state = self::STATE_DIRTY;
 
@@ -711,7 +699,7 @@ final class Query extends AbstractQuery
     /**
      * {@inheritdoc}
      */
-    public function setHydrationMode($hydrationMode)
+    public function setHydrationMode($hydrationMode): self
     {
         $this->_state = self::STATE_DIRTY;
 
@@ -745,7 +733,7 @@ final class Query extends AbstractQuery
      *
      * @return int|null The current lock mode of this query or NULL if no specific lock mode is set.
      */
-    public function getLockMode()
+    public function getLockMode(): ?int
     {
         $lockMode = $this->getHint(self::HINT_LOCK_MODE);
 
@@ -777,18 +765,13 @@ final class Query extends AbstractQuery
         );
     }
 
-     /**
-      * {@inheritdoc}
-      */
-    protected function getHash()
+    protected function getHash(): string
     {
         return sha1(parent::getHash() . '-' . $this->firstResult . '-' . $this->maxResults);
     }
 
     /**
      * Cleanup Query resource when clone is called.
-     *
-     * @return void
      */
     public function __clone()
     {

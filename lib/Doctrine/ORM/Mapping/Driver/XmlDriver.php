@@ -681,7 +681,7 @@ class XmlDriver extends FileDriver
      *
      * @return mixed[] The options array.
      */
-    private function parseOptions(SimpleXMLElement $options)
+    private function parseOptions(SimpleXMLElement $options): array
     {
         $array = [];
 
@@ -724,7 +724,7 @@ class XmlDriver extends FileDriver
      *                   columnDefinition?: string
      *               }
      */
-    private function joinColumnToArray(SimpleXMLElement $joinColumnElement)
+    private function joinColumnToArray(SimpleXMLElement $joinColumnElement): array
     {
         $joinColumn = [
             'name' => (string) $joinColumnElement['name'],
@@ -753,8 +753,6 @@ class XmlDriver extends FileDriver
      /**
       * Parses the given field as array.
       *
-      * @return mixed[]
-      *
       * @psalm-return array{
       *                   fieldName: string,
       *                   type?: string,
@@ -769,7 +767,7 @@ class XmlDriver extends FileDriver
       *                   options?: array
       *               }
       */
-    private function columnToArray(SimpleXMLElement $fieldMapping)
+    private function columnToArray(SimpleXMLElement $fieldMapping): array
     {
         $mapping = [
             'fieldName' => (string) $fieldMapping['name'],
@@ -821,11 +819,9 @@ class XmlDriver extends FileDriver
     /**
      * Parse / Normalize the cache configuration
      *
-     * @return mixed[]
-     *
      * @psalm-return array{usage: mixed, region: string|null}
      */
-    private function cacheToArray(SimpleXMLElement $cacheMapping)
+    private function cacheToArray(SimpleXMLElement $cacheMapping): array
     {
         $region = isset($cacheMapping['region']) ? (string) $cacheMapping['region'] : null;
         $usage  = isset($cacheMapping['usage']) ? strtoupper($cacheMapping['usage']) : null;
@@ -853,7 +849,7 @@ class XmlDriver extends FileDriver
      *
      * @psalm-return list<string>
      */
-    private function getCascadeMappings(SimpleXMLElement $cascadeElement)
+    private function getCascadeMappings(SimpleXMLElement $cascadeElement): array
     {
         $cascades = [];
         foreach ($cascadeElement->children() as $action) {

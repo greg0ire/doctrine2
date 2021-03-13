@@ -598,14 +598,11 @@ class AnnotationDriver extends AbstractAnnotationDriver
     /**
      * Attempts to resolve the fetch mode.
      *
-     * @param string $className The class name.
-     * @param string $fetchMode The fetch mode.
-     *
-     * @return int The fetch mode as defined in ClassMetadata.
-     *
      * @throws MappingException If the fetch mode is not valid.
+     *
+     * @psalm-return \Doctrine\ORM\Mapping\ClassMetadata::FETCH_* The fetch mode as defined in ClassMetadata.
      */
-    private function getFetchMode($className, $fetchMode)
+    private function getFetchMode(string $className, string $fetchMode): int
     {
         if (! defined('Doctrine\ORM\Mapping\ClassMetadata::FETCH_' . $fetchMode)) {
             throw MappingException::invalidFetchMode($className, $fetchMode);
@@ -621,7 +618,7 @@ class AnnotationDriver extends AbstractAnnotationDriver
      *
      * @psalm-return list<callable-array>
      */
-    private function getMethodCallbacks(ReflectionMethod $method)
+    private function getMethodCallbacks(ReflectionMethod $method): array
     {
         $callbacks   = [];
         $annotations = $this->reader->getMethodAnnotations($method);
@@ -666,8 +663,6 @@ class AnnotationDriver extends AbstractAnnotationDriver
     /**
      * Parse the given JoinColumn as array
      *
-     * @return mixed[]
-     *
      * @psalm-return array{
      *                   name: string,
      *                   unique: bool,
@@ -677,7 +672,7 @@ class AnnotationDriver extends AbstractAnnotationDriver
      *                   referencedColumnName: string
      *               }
      */
-    private function joinColumnToArray(Mapping\JoinColumn $joinColumn)
+    private function joinColumnToArray(Mapping\JoinColumn $joinColumn): array
     {
         return [
             'name' => $joinColumn->name,
@@ -692,10 +687,6 @@ class AnnotationDriver extends AbstractAnnotationDriver
     /**
      * Parse the given Column as array
      *
-     * @param string $fieldName
-     *
-     * @return mixed[]
-     *
      * @psalm-return array{
      *                   fieldName: string,
      *                   type: mixed,
@@ -709,7 +700,7 @@ class AnnotationDriver extends AbstractAnnotationDriver
      *                   columnDefinition?: string
      *               }
      */
-    private function columnToArray($fieldName, Mapping\Column $column)
+    private function columnToArray(string $fieldName, Mapping\Column $column): array
     {
         $mapping = [
             'fieldName' => $fieldName,

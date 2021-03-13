@@ -837,7 +837,7 @@ class YamlDriver extends FileDriver
      * @psalm-param array{usage: mixed, region: (string|null)} $cacheMapping
      * @psalm-return array{usage: mixed, region: (string|null)}
      */
-    private function cacheToArray($cacheMapping)
+    private function cacheToArray(array $cacheMapping): array
     {
         $region = isset($cacheMapping['region']) ? (string) $cacheMapping['region'] : null;
         $usage  = isset($cacheMapping['usage']) ? strtoupper($cacheMapping['usage']) : null;

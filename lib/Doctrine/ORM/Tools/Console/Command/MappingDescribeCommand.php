@@ -59,10 +59,7 @@ use const JSON_UNESCAPED_UNICODE;
  */
 final class MappingDescribeCommand extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('orm:mapping:describe')
              ->addArgument('entityName', InputArgument::REQUIRED, 'Full or partial name of entity')
@@ -79,10 +76,7 @@ EOT
              );
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $ui = new SymfonyStyle($input, $output);
 
@@ -99,8 +93,11 @@ EOT
      *
      * @param string $entityName Full or partial entity class name
      */
-    private function displayEntity($entityName, EntityManagerInterface $entityManager, SymfonyStyle $ui)
-    {
+    private function displayEntity(
+        string $entityName,
+        EntityManagerInterface $entityManager,
+        SymfonyStyle $ui
+    ): void {
         $metadata = $this->getClassMetadata($entityName, $entityManager);
 
         $ui->table(
@@ -171,11 +168,11 @@ EOT
      * name
      *
      * @param string $entityName Full or partial entity name
-     *
-     * @return ClassMetadata
      */
-    private function getClassMetadata($entityName, EntityManagerInterface $entityManager)
-    {
+    private function getClassMetadata(
+        string $entityName,
+        EntityManagerInterface $entityManager
+    ): ClassMetadata {
         try {
             return $entityManager->getClassMetadata($entityName);
         } catch (MappingException $e) {
@@ -210,10 +207,8 @@ EOT
      * Format the given value for console output
      *
      * @param mixed $value
-     *
-     * @return string
      */
-    private function formatValue($value)
+    private function formatValue($value): string
     {
         if ($value === '') {
             return '';
@@ -256,7 +251,7 @@ EOT
      *
      * @psalm-return array{0: string, 1: string}
      */
-    private function formatField($label, $value): array
+    private function formatField(string $label, $value): array
     {
         if ($value === null) {
             $value = '<comment>None</comment>';
